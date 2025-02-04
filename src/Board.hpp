@@ -1,14 +1,16 @@
 #pragma once
 
 #include <array>
+#include <memory>
+#include <stdexcept>
 #include <vector>
 #include "BoardTile.hpp"
 #include "PositionTile.hpp"
 #include "piece/AbstractPiece.hpp"
 
 class Board {
-    std::array<BoardTile, 64>  m_tiles;
-    std::vector<AbstractPiece> m_pieces;
+    std::array<BoardTile, 64>                   m_tiles;
+    std::vector<std::unique_ptr<AbstractPiece>> m_piecesPtr;
 
 public:
     BoardTile* getTile(PositionTile position) const;

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string>
 #include "PositionTile.hpp"
 #include "piece/AbstractPiece.hpp"
 
@@ -11,9 +12,17 @@ class BoardTile {
     AbstractPiece* m_piecePtr;
 
 public:
-    PositionTile getPosition() const;
-    unsigned int x() const;
-    unsigned int y() const;
+    BoardTile() = default;
+    BoardTile(Board& board, unsigned int x, unsigned int y);
 
-    AbstractPiece* getPiece() const;
+    PositionTile getPosition() const { return m_position; };
+    unsigned int x() const { return m_position.x; };
+    unsigned int y() const { return m_position.y; };
+
+    std::string getLabel() const;
+
+    AbstractPiece* getPiece() const { return m_piecePtr; };
+
+    void setPiece(AbstractPiece& piece);
+    bool isEmpty() const { return m_piecePtr == nullptr; }
 };

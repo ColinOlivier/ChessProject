@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <string>
 #include <vector>
 #include "../PositionTile.hpp"
 
@@ -12,12 +13,17 @@ enum class PlayerColor : uint8_t {
 };
 
 class AbstractPiece {
-    PlayerColor m_playerColor;
-    BoardTile*  m_tilePtr;
+    PlayerColor m_playerColor{PlayerColor::White};
+    BoardTile*  m_tilePtr{};
 
 public:
-    PlayerColor  getPlayerColor() const;
-    PositionTile getPosition() const;
+    AbstractPiece() = delete;
+    AbstractPiece(PlayerColor playerColor);
+    virtual std::string getLabel() { return "A"; };
+    PlayerColor         getPlayerColor() const { return m_playerColor; };
+    PositionTile        getPosition();
 
-    virtual std::vector<BoardTile*> getPossibleMove();
+    void setTile(BoardTile& tile);
+
+    std::vector<BoardTile*> getPossibleMove();
 };

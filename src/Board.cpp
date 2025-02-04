@@ -38,5 +38,5 @@ BoardTile& Board::getTile(unsigned int x, unsigned int y)
 
 const BoardTile& Board::getTile(unsigned int x, unsigned int y) const
 {
-    return m_tiles[x + y * 8];
+    return getTile(x, y);
 }

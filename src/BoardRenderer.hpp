@@ -6,6 +6,9 @@
 #include "BoardTile.hpp"
 
 class BoardRenderer {
+    ImVec4 boardColor1{0.9, 0.9, 0.7, 1.0};
+    ImVec4 boardColor2{1.0, 0.5, 0.5, 1.0};
+
 public:
     void renderBoard(const Board& board) const;
     void renderTile(const BoardTile& tile) const;

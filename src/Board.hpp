@@ -26,5 +26,19 @@ public:
     AbstractPiece& getPiece(PositionTile position) const;
     AbstractPiece& getPiece(unsigned int x, unsigned int y) const;
 
+    template<typename PieceType>
+    void createPiece(PositionTile position, PlayerColor playerColor)
+    {
+        if (!position.isValid())
+            throw std::runtime_error("Cannot create piece on an invalid position");
+
+        if (!getTile(position).isEmpty())
+            throw std::runtime_error("Cannot create piece on a non-empty tile");
+
+        auto piece = std::make_unique<PieceType>(playerColor);
+        piece->setTile(getTile(position));
+        m_piecesPtr.push_back(std::move(piece));
+    }
+
     unsigned int getPieceCount() const;
 };

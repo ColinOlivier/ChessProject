@@ -6,5 +6,8 @@
 
 class PawnPiece : public AbstractPiece {
 public:
-    std::vector<BoardTile*> getPossibleMove(Board* board);
+    PawnPiece(PlayerColor playerColor)
+        : AbstractPiece(playerColor) {}
+
+    std::vector<BoardTile*> getPossibleMove() const override;
 };

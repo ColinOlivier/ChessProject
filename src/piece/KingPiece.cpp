@@ -2,8 +2,9 @@
 #include <vector>
 #include "BoardTile.hpp"
 
-std::vector<BoardTile*> KingPiece::getPossibleMove(Board* board)
+std::vector<BoardTile*> KingPiece::getPossibleMove() const
 {
+    Board*                  board = getTile()->getBoard();
     std::vector<BoardTile*> possibleMoves;
 
     // Récupérer la case actuelle

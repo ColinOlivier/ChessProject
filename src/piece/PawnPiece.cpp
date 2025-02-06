@@ -1,7 +1,9 @@
 #include "PawnPiece.hpp"
+#include "Board.hpp"
 
-std::vector<BoardTile*> PawnPiece::getPossibleMove(Board* board)
+std::vector<BoardTile*> PawnPiece::getPossibleMove() const
 {
+    Board*                  board = getTile()->getBoard(); // Récupérer le plateau
     std::vector<BoardTile*> possibleMoves;
 
     // Récupérer la case actuelle

@@ -1,8 +1,9 @@
 #include "BishopPiece.hpp"
 #include "PositionTile.hpp"
 
-std::vector<BoardTile*> BishopPiece::getPossibleMove(Board* board)
+std::vector<BoardTile*> BishopPiece::getPossibleMove() const
 {
+    Board*                  board = getTile()->getBoard();
     std::vector<BoardTile*> possibleMoves;
 
     // Récupérer la case actuelle

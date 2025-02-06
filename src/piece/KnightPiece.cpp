@@ -1,7 +1,8 @@
 #include "KnightPiece.hpp"
 
-std::vector<BoardTile*> KnightPiece::getPossibleMove(Board* board)
+std::vector<BoardTile*> KnightPiece::getPossibleMove() const
 {
+    Board*                  board = getTile()->getBoard();
     std::vector<BoardTile*> possibleMoves;
 
     // Récupérer la case actuelle

@@ -6,5 +6,5 @@
 
 class QueenPiece : public AbstractPiece {
 public:
-    std::vector<BoardTile*> getPossibleMove(Board* board);
+    std::vector<BoardTile*> getPossibleMove() const override;
 };

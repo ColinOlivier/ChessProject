@@ -1,7 +1,9 @@
 #include "RookPiece.hpp"
+#include "Board.hpp"
 
-std::vector<BoardTile*> RookPiece::getPossibleMove(Board* board)
+std::vector<BoardTile*> RookPiece::getPossibleMove() const
 {
+    Board*                  board = getTile()->getBoard();
     std::vector<BoardTile*> possibleMoves;
 
     // Récupérer la case actuelle

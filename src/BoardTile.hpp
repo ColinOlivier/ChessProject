@@ -16,4 +16,5 @@ public:
     unsigned int y() const;
 
     AbstractPiece* getPiece() const { return m_piecePtr; }
+    Board*         getBoard() const { return m_boardPtr; }
 };

@@ -11,9 +11,10 @@ class BoardTile {
     AbstractPiece* m_piecePtr;
 
 public:
-    PositionTile getPosition() const;
+    PositionTile getPosition() const { return m_position; }
     unsigned int x() const;
     unsigned int y() const;
 
-    AbstractPiece* getPiece() const;
+    AbstractPiece* getPiece() const { return m_piecePtr; }
+    Board*         getBoard() const { return m_boardPtr; }
 };

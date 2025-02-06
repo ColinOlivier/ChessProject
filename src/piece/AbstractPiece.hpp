@@ -2,7 +2,6 @@
 
 #include <cstdint>
 #include <vector>
-#include "../PositionTile.hpp"
 
 class BoardTile;
 
@@ -16,11 +15,13 @@ class AbstractPiece {
     BoardTile*  m_tilePtr;
 
 protected:
+    AbstractPiece(PlayerColor playerColor)
+        : m_playerColor(playerColor), m_tilePtr(nullptr) {}
     void       setTile(BoardTile* tile) { m_tilePtr = tile; }
     void       setPlayerColor(PlayerColor color) { m_playerColor = color; }
     BoardTile* getTile() const { return m_tilePtr; }
 
 public:
     PlayerColor                     getPlayerColor() const { return m_playerColor; }
-    virtual std::vector<BoardTile*> getPossibleMove();
+    virtual std::vector<BoardTile*> getPossibleMove() const = 0;
 };

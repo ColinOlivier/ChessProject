@@ -4,7 +4,6 @@
 #include <cstddef>
 #include <string>
 #include "Board.hpp"
-#include "piece/PawnPiece.hpp"
 
 void BoardRenderer::renderBoard(const Board& board) const
 {
@@ -26,10 +25,12 @@ void BoardRenderer::renderBoard(const Board& board) const
 
 void BoardRenderer::renderTile(const BoardTile& tile, bool isSelectable) const
 {
-    if (tile.x() % 2 == 0 && tile.y() % 2 == 1 || tile.x() % 2 == 1 && tile.y() % 2 == 0)
+    if (isSelectable)
+        ImGui::PushStyleColor(ImGuiCol_Button, params.TileSelectableColor);
+    else if (tile.x() % 2 == 0 && tile.y() % 2 == 1 || tile.x() % 2 == 1 && tile.y() % 2 == 0)
         ImGui::PushStyleColor(ImGuiCol_Button, params.TileColor1);
     else
-        ImGui::PushStyleColor(ImGuiCol_Button, params.TileColor2);
+        ImGui ::PushStyleColor(ImGuiCol_Button, params.TileColor2);
 
     if (tile.getPiece() != nullptr && tile.getPiece()->getPlayerColor() == PlayerColor::White)
         ImGui::PushStyleColor(ImGuiCol_Text, params.PieceColor1);

@@ -6,5 +6,8 @@
 
 class KnightPiece : public AbstractPiece {
 public:
-    std::vector<BoardTile*> getPossibleMove() const override;
+    KnightPiece(PlayerColor playerColor)
+        : AbstractPiece(playerColor) {}
+    std::string             getLabel() override { return "C"; };
+    std::vector<BoardTile*> getPossibleMove() const;
 };

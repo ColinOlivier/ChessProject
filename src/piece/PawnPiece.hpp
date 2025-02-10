@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string>
 #include "../Board.hpp"
 #include "../BoardTile.hpp"
 #include "AbstractPiece.hpp"
@@ -9,5 +10,6 @@ public:
     PawnPiece(PlayerColor playerColor)
         : AbstractPiece(playerColor) {}
 
-    std::vector<BoardTile*> getPossibleMove() const override;
+    std::string             getLabel() override { return "P"; };
+    std::vector<BoardTile*> getPossibleMove() const;
 };

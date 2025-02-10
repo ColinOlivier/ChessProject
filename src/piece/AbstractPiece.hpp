@@ -1,7 +1,9 @@
 #pragma once
 
 #include <cstdint>
+#include <string>
 #include <vector>
+#include "PositionTile.hpp"
 
 class BoardTile;
 
@@ -11,17 +13,21 @@ enum class PlayerColor : uint8_t {
 };
 
 class AbstractPiece {
-    PlayerColor m_playerColor;
-    BoardTile*  m_tilePtr;
-
 protected:
-    AbstractPiece(PlayerColor playerColor)
-        : m_playerColor(playerColor), m_tilePtr(nullptr) {}
+    PlayerColor m_playerColor{PlayerColor::White};
+    BoardTile*  m_tilePtr{};
+
+public:
+    AbstractPiece() = delete;
     void       setTile(BoardTile* tile) { m_tilePtr = tile; }
     void       setPlayerColor(PlayerColor color) { m_playerColor = color; }
     BoardTile* getTile() const { return m_tilePtr; }
+    AbstractPiece(PlayerColor playerColor);
+    virtual std::string getLabel() { return "A"; };
+    PlayerColor         getPlayerColor() const { return m_playerColor; };
+    PositionTile        getPosition();
 
-public:
-    PlayerColor                     getPlayerColor() const { return m_playerColor; }
-    virtual std::vector<BoardTile*> getPossibleMove() const = 0;
+    void setTile(BoardTile& tile);
+
+    std::vector<BoardTile*> getPossibleMove();
 };

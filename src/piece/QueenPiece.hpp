@@ -6,5 +6,9 @@
 
 class QueenPiece : public AbstractPiece {
 public:
-    std::vector<BoardTile*> getPossibleMove() const override;
+    QueenPiece(PlayerColor playerColor)
+        : AbstractPiece(playerColor) {}
+
+public:
+    std::vector<BoardTile*> getPossibleMove() const;
 };

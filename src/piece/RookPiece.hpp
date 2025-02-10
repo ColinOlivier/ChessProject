@@ -6,5 +6,7 @@
 
 class RookPiece : public AbstractPiece {
 public:
-    std::vector<BoardTile*> getPossibleMove() const override;
+    RookPiece(PlayerColor playerColor)
+        : AbstractPiece(playerColor) {}
+    std::vector<BoardTile*> getPossibleMove() const;
 };

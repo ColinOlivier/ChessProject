@@ -12,7 +12,7 @@ BoardTile& Board::getTile(PositionTile position)
 
 const BoardTile& Board::getTile(unsigned int x, unsigned int y) const
 {
-    return getTile(x, y);
+    return m_tiles[x + y * 8];
 }
 
 BoardTile& Board::getTile(unsigned int x, unsigned int y)

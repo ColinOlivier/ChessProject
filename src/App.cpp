@@ -4,9 +4,7 @@
 
 App::App()
 {
-    m_chessboard = Board();
-    m_chessboard.initialize();
-
+    m_chessboard    = Board();
     m_boardRenderer = BoardRenderer();
 }
 

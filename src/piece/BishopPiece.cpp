@@ -1,4 +1,5 @@
 #include "BishopPiece.hpp"
+#include "Board.hpp"
 #include "PositionTile.hpp"
 
 std::vector<BoardTile*> BishopPiece::getPossibleMove() const

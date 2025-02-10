@@ -9,8 +9,5 @@ struct PositionTile {
 
     bool operator==(const PositionTile& pos) const;
 
-    bool isValid() const
-    {
-        return x >= 0 && y >= 0 && x < 8 && y < 8;
-    }
+    bool isValid() const;
 };

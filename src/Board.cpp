@@ -1,5 +1,16 @@
 #include "Board.hpp"
 
+Board::Board()
+{
+    for (unsigned int y = 0; y < 8; y++)
+    {
+        for (unsigned int x = 0; x < 8; x++)
+        {
+            getTile(x, y) = BoardTile(*this, x, y);
+        }
+    }
+}
+
 const BoardTile& Board::getTile(PositionTile position) const
 {
     return getTile(position);

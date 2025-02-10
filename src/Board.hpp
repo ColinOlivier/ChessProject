@@ -13,6 +13,7 @@ class Board {
     std::vector<std::unique_ptr<AbstractPiece>> m_piecesPtr;
 
 public:
+    Board();
     const BoardTile& getTile(PositionTile position) const;
     BoardTile&       getTile(PositionTile position);
     const BoardTile& getTile(unsigned int x, unsigned int y) const;

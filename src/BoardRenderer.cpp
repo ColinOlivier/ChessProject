@@ -4,19 +4,17 @@
 #include <cstddef>
 #include <string>
 #include "Board.hpp"
-#include "piece/PawnPiece.hpp"
 
 void BoardRenderer::renderBoard(const Board& board) const
 {
-    ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0, 0));
-    ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(0, 0));
+    ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, params.ItemSpacing);
+    ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, params.FramePadding);
     for (size_t y{0}; y < 8; ++y)
     {
         for (size_t x{0}; x < 8; ++x)
         {
             // Color
-
-            renderTile(board.getTile(x, y));
+            renderTile(board.getTile(x, y), false);
 
             ImGui::SameLine();
         }
@@ -25,22 +23,25 @@ void BoardRenderer::renderBoard(const Board& board) const
     ImGui::PopStyleVar(2);
 }
 
-void BoardRenderer::renderTile(const BoardTile& tile) const
+void BoardRenderer::renderTile(const BoardTile& tile, bool isSelectable) const
 {
-    if (tile.x() % 2 == 0 && tile.y() % 2 == 1 || tile.x() % 2 == 1 && tile.y() % 2 == 0)
-        ImGui::PushStyleColor(ImGuiCol_Button, boardColor1);
+    if (isSelectable)
+        ImGui::PushStyleColor(ImGuiCol_Button, params.TileSelectableColor);
+    else if (tile.x() % 2 == 0 && tile.y() % 2 == 1 || tile.x() % 2 == 1 && tile.y() % 2 == 0)
+        ImGui::PushStyleColor(ImGuiCol_Button, params.TileColor1);
     else
-        ImGui::PushStyleColor(ImGuiCol_Button, boardColor2);
+        ImGui ::PushStyleColor(ImGuiCol_Button, params.TileColor2);
 
-    ImVec4 textColor{0.0, 0.0, 0.0, 1.0};
     if (tile.getPiece() != nullptr && tile.getPiece()->getPlayerColor() == PlayerColor::White)
-        textColor = ImVec4(1.0, 1.0, 1.0, 1.0);
+        ImGui::PushStyleColor(ImGuiCol_Text, params.PieceColor1);
+    else
+        ImGui::PushStyleColor(ImGuiCol_Text, params.PieceColor2);
 
-    ImGui::PushStyleColor(ImGuiCol_Text, textColor);
+    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, params.TileHoveredColor);
 
     if (ImGui::Button(tile.getLabel().c_str(), {100.0, 100.0}))
     {
         // Select the piece
     }
-    ImGui::PopStyleColor(2);
+    ImGui::PopStyleColor(3);
 }

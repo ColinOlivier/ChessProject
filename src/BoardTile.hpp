@@ -12,17 +12,21 @@ class BoardTile {
     AbstractPiece* m_piecePtr;
 
 public:
-    AbstractPiece* getPiece() const { return m_piecePtr; }
-    Board*         getBoard() const { return m_boardPtr; }
+    // Constructor
     BoardTile() = default;
     BoardTile(Board& board, unsigned int x, unsigned int y);
 
-    PositionTile getPosition() const { return m_position; };
+    // Getters
     unsigned int x() const { return m_position.x; };
     unsigned int y() const { return m_position.y; };
 
+    AbstractPiece* getPiece() const { return m_piecePtr; }
+    Board*         getBoard() const { return m_boardPtr; }
+    PositionTile   getPosition() const { return m_position; };
+    bool           isEmpty() const { return m_piecePtr == nullptr; }
+
     std::string getLabel() const;
 
+    // Setters
     void setPiece(AbstractPiece& piece);
-    bool isEmpty() const { return m_piecePtr == nullptr; }
 };

@@ -13,7 +13,10 @@ class Board {
     std::vector<std::unique_ptr<AbstractPiece>> m_piecesPtr;
 
 public:
+    // Constructor
     Board();
+
+    // Getters
     const BoardTile& getTile(PositionTile position) const;
     BoardTile&       getTile(PositionTile position);
     const BoardTile& getTile(unsigned int x, unsigned int y) const;
@@ -25,6 +28,9 @@ public:
     AbstractPiece& getPiece(PositionTile position) const;
     AbstractPiece& getPiece(unsigned int x, unsigned int y) const;
 
+    unsigned int getPieceCount() const;
+
+    // Create a piece of type PieceType at the given position
     template<typename PieceType>
     void createPiece(PositionTile position, PlayerColor playerColor)
     {
@@ -39,5 +45,4 @@ public:
         m_piecesPtr.push_back(std::move(piece));
     }
 
-    unsigned int getPieceCount() const;
 };

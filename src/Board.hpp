@@ -45,4 +45,6 @@ public:
         m_piecesPtr.push_back(std::move(piece));
     }
 
+    // Remove the piece at the given position
+    void removePiece(PositionTile position);
 };

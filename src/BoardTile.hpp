@@ -29,4 +29,5 @@ public:
 
     // Setters
     void setPiece(AbstractPiece& piece);
+    void removePiece();
 };

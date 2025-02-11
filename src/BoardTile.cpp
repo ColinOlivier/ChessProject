@@ -18,3 +18,9 @@ void BoardTile::setPiece(AbstractPiece& piece)
 {
     m_piecePtr = &piece;
 }
+
+void BoardTile::removePiece()
+{
+    delete m_piecePtr;
+    m_piecePtr = nullptr;
+}

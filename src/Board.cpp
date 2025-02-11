@@ -33,5 +33,5 @@ BoardTile& Board::getTile(unsigned int x, unsigned int y)
 
 void Board::removePiece(PositionTile position)
 {
-    // getTile(position).removePiece();
+    getTile(position).removePiece();
 }

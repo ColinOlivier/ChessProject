@@ -30,3 +30,8 @@ BoardTile& Board::getTile(unsigned int x, unsigned int y)
 {
     return m_tiles[x + y * 8];
 }
+
+void Board::removePiece(PositionTile position)
+{
+    getTile(position).removePiece();
+}

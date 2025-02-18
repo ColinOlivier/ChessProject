@@ -13,7 +13,7 @@ Board::Board()
 
 const BoardTile& Board::getTile(PositionTile position) const
 {
-    return getTile(position);
+    return getTile(position.x, position.y);
 }
 
 BoardTile& Board::getTile(PositionTile position)
